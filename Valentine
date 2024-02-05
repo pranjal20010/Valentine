@@ -1,0 +1,59 @@
+import { useState } from "react";
+import "./App.css";
+
+const pharses = [
+  "No",
+  "Are you sure",
+  "Really Sure sanvi",
+  "Peanut please",
+  "Dont do this to me sanvi",
+  "im gonna cry...savni",
+  "you are breaking my heart sanvi",
+];
+
+function App() {
+  const [Nocount, setNoCount] = useState(0);
+  const [yesPressed, setYesPressed] = useState(false);
+  const yesButtonsize = Nocount * 20 + 16;
+  
+  function handleNoClick() {
+    setNoCount(Nocount + 1);
+  }
+  function getNoButtontext() {
+    return pharses[Math.min(Nocount, pharses.length - 1)];
+  }
+  return (
+    <div className="Valentine-container">
+      {yesPressed ? (
+        <>
+          <img
+            alt="cats kissing"
+            src="https://tenor.com/view/peach-goma-love-kiss-head-gif-9300439802251876272"
+          />
+          <div className="text">YEYEYEYEYEYEYEYE</div>
+        </>
+      ) : (
+        <>
+          <img
+            alt="bear with heart"
+            src="https://tenor.com/view/cat-kitten-kitty-silly-cat-silly-kitten-gif-26276762"
+          />
+          <div>Will you be my valentine?</div>
+          <div>
+            <button
+              className="yesButton"
+              style={{ fontSize: yesButtonsize }}
+              onClick={() => setYesPressed(true)}
+            >
+              Yes
+            </button>
+            <button onClick={handleNoClick} className="noButton">
+              {getNoButtontext()}
+            </button>
+          </div>
+        </>
+      )}
+    </div>
+  );
+}
+export default App;
